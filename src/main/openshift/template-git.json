@@ -133,17 +133,17 @@
                     "targetPort": 8080
                 }],
                 "selector": {
-                    "deploymentConfig": "coolstore-dev"
+                    "deploymentConfig": "coolstore"
                 }
             },
             "metadata": {
-                "name": "coolstore-dev",
+                "name": "coolstore",
                 "labels": {
-                    "application": "coolstore-dev"
+                    "application": "coolstore"
                 },
                 "annotations": {
                     "description": "The web server's http port.",
-                    "service.alpha.openshift.io/dependencies": "[{\"name\":\"coolstore-dev-postgresql\",\"namespace\":\"\",\"kind\":\"Service\"}]"
+                    "service.alpha.openshift.io/dependencies": "[{\"name\":\"coolstore-postgresql\",\"namespace\":\"\",\"kind\":\"Service\"}]"
                 }
             }
         },
@@ -156,13 +156,13 @@
                     "targetPort": 5432
                 }],
                 "selector": {
-                    "deploymentConfig": "coolstore-dev-postgresql"
+                    "deploymentConfig": "coolstore-postgresql"
                 }
             },
             "metadata": {
-                "name": "coolstore-dev-postgresql",
+                "name": "coolstore-postgresql",
                 "labels": {
-                    "application": "coolstore-dev"
+                    "application": "coolstore"
                 },
                 "annotations": {
                     "description": "The database server's port."
@@ -172,11 +172,11 @@
         {
             "kind": "Route",
             "apiVersion": "v1",
-            "id": "coolstore-dev-http",
+            "id": "coolstore-http",
             "metadata": {
                 "name": "www-dev",
                 "labels": {
-                    "application": "coolstore-dev"
+                    "application": "coolstore"
                 },
                 "annotations": {
                     "description": "Route for application's http service."
@@ -184,7 +184,7 @@
             },
             "spec": {
                 "to": {
-                    "name": "coolstore-dev"
+                    "name": "coolstore"
                 }
             }
         },
@@ -257,9 +257,9 @@
             "kind": "DeploymentConfig",
             "apiVersion": "v1",
             "metadata": {
-                "name": "coolstore-dev",
+                "name": "coolstore",
                 "labels": {
-                    "application": "coolstore-dev"
+                    "application": "coolstore"
                 }
             },
             "spec": {
@@ -279,7 +279,7 @@
                         "imageChangeParams": {
                             "automatic": true,
                             "containerNames": [
-                                "coolstore-dev"
+                                "coolstore"
                             ],
                             "from": {
                                 "kind": "ImageStreamTag",
@@ -293,21 +293,21 @@
                 ],
                 "replicas": 1,
                 "selector": {
-                    "deploymentConfig": "coolstore-dev"
+                    "deploymentConfig": "coolstore"
                 },
                 "template": {
                     "metadata": {
-                        "name": "coolstore-dev",
+                        "name": "coolstore",
                         "labels": {
-                            "deploymentConfig": "coolstore-dev",
-                            "application": "coolstore-dev"
+                            "deploymentConfig": "coolstore",
+                            "application": "coolstore"
                         }
                     },
                     "spec": {
                         "serviceAccountName": "coolstore-serviceaccount",
                         "terminationGracePeriodSeconds": 75,
                         "containers": [{
-                            "name": "coolstore-dev",
+                            "name": "coolstore",
                             "image": "coolstore",
                             "imagePullPolicy": "Always",
                             "volumeMounts": [{
@@ -378,7 +378,7 @@
                             "env": [
                                 {
                                     "name": "DB_SERVICE_PREFIX_MAPPING",
-                                    "value": "coolstore-dev-postgresql=DB"
+                                    "value": "coolstore-postgresql=DB"
                                 },
                                 {
                                     "name": "DB_JNDI",
@@ -398,7 +398,7 @@
                                 },
                                 {
                                     "name": "TX_DATABASE_PREFIX_MAPPING",
-                                    "value": "coolstore-dev-postgresql=DB"
+                                    "value": "coolstore-postgresql=DB"
                                 },
                                 {
                                     "name": "DB_MIN_POOL_SIZE",
@@ -414,7 +414,7 @@
                                 },
                                 {
                                     "name": "OPENSHIFT_KUBE_PING_LABELS",
-                                    "value": "application=coolstore-dev"
+                                    "value": "application=coolstore"
                                 },
                                 {
                                     "name": "OPENSHIFT_KUBE_PING_NAMESPACE",
@@ -478,11 +478,11 @@
                                 },
                                 {
                                     "name": "DEFAULT_JOB_REPOSITORY",
-                                    "value": "coolstore-dev-postgresql"
+                                    "value": "coolstore-postgresql"
                                 },
                                 {
                                     "name": "TIMER_SERVICE_DATA_STORE",
-                                    "value": "coolstore-dev-postgresql"
+                                    "value": "coolstore-postgresql"
                                 }
                             ]
                         }],
@@ -507,9 +507,9 @@
             "kind": "DeploymentConfig",
             "apiVersion": "v1",
             "metadata": {
-                "name": "coolstore-dev-postgresql",
+                "name": "coolstore-postgresql",
                 "labels": {
-                    "application": "coolstore-dev"
+                    "application": "coolstore"
                 }
             },
             "spec": {
@@ -521,7 +521,7 @@
                         "imageChangeParams": {
                             "automatic": true,
                             "containerNames": [
-                                "coolstore-dev-postgresql"
+                                "coolstore-postgresql"
                             ],
                             "from": {
                                 "kind": "ImageStreamTag",
@@ -536,20 +536,20 @@
                 ],
                 "replicas": 1,
                 "selector": {
-                    "deploymentConfig": "coolstore-dev-postgresql"
+                    "deploymentConfig": "coolstore-postgresql"
                 },
                 "template": {
                     "metadata": {
-                        "name": "coolstore-dev-postgresql",
+                        "name": "coolstore-postgresql",
                         "labels": {
-                            "deploymentConfig": "coolstore-dev-postgresql",
-                            "application": "coolstore-dev"
+                            "deploymentConfig": "coolstore-postgresql",
+                            "application": "coolstore"
                         }
                     },
                     "spec": {
                         "terminationGracePeriodSeconds": 60,
                         "containers": [{
-                            "name": "coolstore-dev-postgresql",
+                            "name": "coolstore-postgresql",
                             "image": "postgresql",
                             "imagePullPolicy": "Always",
                             "readinessProbe": {
