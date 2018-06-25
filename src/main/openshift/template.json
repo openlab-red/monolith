@@ -162,7 +162,7 @@
             "metadata": {
                 "name": "coolstore-dev-postgresql",
                 "labels": {
-                    "app": "coolstore-dev"
+                    "app": "coolstore-dev-postgresql"
                 },
                 "annotations": {
                     "description": "The database server's port."
@@ -205,7 +205,7 @@
             "metadata": {
                 "name": "coolstore",
                 "labels": {
-                    "app": "coolstore"
+                    "app": "coolstore-dev"
                 }
             },
             "spec": {
@@ -498,7 +498,7 @@
             "metadata": {
                 "name": "coolstore-dev-postgresql",
                 "labels": {
-                    "app": "coolstore-dev"
+                    "app": "coolstore-dev-postgresql"
                 }
             },
             "spec": {
@@ -532,7 +532,7 @@
                         "name": "coolstore-dev-postgresql",
                         "labels": {
                             "deploymentConfig": "coolstore-dev-postgresql",
-                            "app": "coolstore-dev"
+                            "app": "coolstore-dev-postgresql"
                         }
                     },
                     "spec": {
