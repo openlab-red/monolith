@@ -139,7 +139,7 @@
             "metadata": {
                 "name": "coolstore-dev",
                 "labels": {
-                    "application": "coolstore-dev"
+                    "app": "coolstore-dev"
                 },
                 "annotations": {
                     "description": "The web server's http port.",
@@ -162,7 +162,7 @@
             "metadata": {
                 "name": "coolstore-dev-postgresql",
                 "labels": {
-                    "application": "coolstore-dev"
+                    "app": "coolstore-dev"
                 },
                 "annotations": {
                     "description": "The database server's port."
@@ -176,7 +176,7 @@
             "metadata": {
                 "name": "www-dev",
                 "labels": {
-                    "application": "coolstore-dev"
+                    "app": "coolstore-dev"
                 },
                 "annotations": {
                     "description": "Route for application's http service."
@@ -194,7 +194,7 @@
             "metadata": {
                 "name": "coolstore",
                 "labels": {
-                    "application": "coolstore",
+                    "app": "coolstore",
                     "build": "coolstore"
                 }
             }
@@ -205,7 +205,7 @@
             "metadata": {
                 "name": "coolstore",
                 "labels": {
-                    "application": "coolstore"
+                    "app": "coolstore"
                 }
             },
             "spec": {
@@ -250,7 +250,7 @@
             "metadata": {
                 "name": "coolstore-dev",
                 "labels": {
-                    "application": "coolstore-dev"
+                    "app": "coolstore-dev"
                 }
             },
             "spec": {
@@ -291,7 +291,7 @@
                         "name": "coolstore-dev",
                         "labels": {
                             "deploymentConfig": "coolstore-dev",
-                            "application": "coolstore-dev"
+                            "app": "coolstore-dev"
                         }
                     },
                     "spec": {
@@ -403,7 +403,7 @@
                                 },
                                 {
                                     "name": "OPENSHIFT_KUBE_PING_LABELS",
-                                    "value": "application=coolstore-dev"
+                                    "value": "app=coolstore-dev"
                                 },
                                 {
                                     "name": "OPENSHIFT_KUBE_PING_NAMESPACE",
@@ -498,7 +498,7 @@
             "metadata": {
                 "name": "coolstore-dev-postgresql",
                 "labels": {
-                    "application": "coolstore-dev"
+                    "app": "coolstore-dev"
                 }
             },
             "spec": {
@@ -532,7 +532,7 @@
                         "name": "coolstore-dev-postgresql",
                         "labels": {
                             "deploymentConfig": "coolstore-dev-postgresql",
-                            "application": "coolstore-dev"
+                            "app": "coolstore-dev"
                         }
                     },
                     "spec": {
